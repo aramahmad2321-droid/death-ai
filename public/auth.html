@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Death AI</title>
+  <meta name="description" content="Sign in or create your Death AI account. Access your Kurdish Sorani AI assistant." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#7c3aed" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+  <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+  <div class="auth-grid-bg" aria-hidden="true"></div>
+
+  <main class="auth-page" role="main">
+    <div class="auth-card">
+
+      <!-- Header -->
+      <div class="auth-header">
+        <a href="/" class="auth-logo" aria-label="Death AI Home">
+          <div class="auth-logo-icon" aria-hidden="true">D</div>
+          <span class="auth-logo-text">Death AI</span>
+        </a>
+        <h1 class="auth-title" id="auth-title">Welcome back</h1>
+        <p class="auth-subtitle" id="auth-subtitle">Sign in to continue your conversations</p>
+      </div>
+
+      <!-- Alert box -->
+      <div id="auth-alert" class="auth-alert hidden" role="alert"></div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+        <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="form-login">Sign In</button>
+        <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" aria-controls="form-register">Create Account</button>
+      </div>
+
+      <!-- ─── LOGIN FORM ─────────────────────────────────── -->
+      <div id="form-login" role="tabpanel" aria-labelledby="tab-login">
+        <!-- Google & Demo Login -->
+        <div class="social-login">
+          <button type="button" class="btn-google" id="btn-demo-login" style="background:var(--brand-gradient-soft);border-color:var(--border-brand);color:var(--brand-primary-light);font-weight:700;">
+            ⚡ Instant Demo Login (1-Click)
+          </button>
+          <a href="/api/auth/google" class="btn-google" id="btn-google-login" aria-label="Sign in with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </a>
+        </div>
+
+        <div class="divider">or sign in with email</div>
+
+        <form class="auth-form" id="login-form" novalidate autocomplete="on">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email address</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/>
+              </svg>
+              <input class="form-input" type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="email" required aria-required="true" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <label class="form-label" for="login-password">Password</label>
+              <button type="button" class="auth-link" id="forgot-link" style="background:none;border:none;cursor:pointer;font-size:0.8125rem;color:var(--brand-primary-light);">Forgot password?</button>
+            </div>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input class="form-input" type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required aria-required="true" />
+            </div>
+          </div>
+          <button type="submit" class="btn-auth" id="login-submit" aria-live="polite">
+            <span class="normal-text">Sign In</span>
+            <span class="loading-text">
+              <span class="spinner" style="width:16px;height:16px;border-width:2px;" aria-hidden="true"></span>
+              Signing In…
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- ─── REGISTER FORM ──────────────────────────────── -->
+      <div id="form-register" role="tabpanel" aria-labelledby="tab-register" class="hidden">
+        <div class="social-login">
+          <a href="/api/auth/google" class="btn-google" id="btn-google-register" aria-label="Sign up with Google">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </a>
+        </div>
+
+        <div class="divider">or create with email</div>
+
+        <form class="auth-form" id="register-form" novalidate autocomplete="off">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+              <input class="form-input" type="text" id="reg-name" name="name" placeholder="Your full name" autocomplete="name" required aria-required="true" minlength="2" maxlength="50" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email address</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/>
+              </svg>
+              <input class="form-input" type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email" required aria-required="true" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input class="form-input" type="password" id="reg-password" name="password" placeholder="Min. 8 characters" autocomplete="new-password" required aria-required="true" minlength="8" />
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar"><div class="strength-fill" id="strength-fill" role="progressbar" aria-label="Password strength"></div></div>
+              <span class="strength-text" id="strength-text">Enter a password</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-language">Preferred Language</label>
+            <select class="form-input form-select" id="reg-language" name="language">
+              <option value="en">🌍 English</option>
+              <option value="ku">🏔️ Kurdish Sorani — کوردی سۆرانی</option>
+              <option value="ar">🌙 Arabic — العربية</option>
+            </select>
+          </div>
+          <p class="auth-terms">By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+          <button type="submit" class="btn-auth" id="register-submit">
+            <span class="normal-text">Create Account</span>
+            <span class="loading-text">
+              <span class="spinner" style="width:16px;height:16px;border-width:2px;" aria-hidden="true"></span>
+              Creating Account…
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- ─── FORGOT PASSWORD FORM ───────────────────────── -->
+      <div id="form-forgot" class="hidden" role="region" aria-label="Password reset">
+        <div style="text-align:center;margin-bottom:var(--space-6);">
+          <span style="font-size:3rem;">🔐</span>
+          <h2 style="font-size:1.25rem;margin:var(--space-3) 0 var(--space-2);">Reset your password</h2>
+          <p style="font-size:0.875rem;color:var(--text-muted);">Enter your email and we'll send you a reset link.</p>
+        </div>
+        <form class="auth-form" id="forgot-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="forgot-email">Email address</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/>
+              </svg>
+              <input class="form-input" type="email" id="forgot-email" name="email" placeholder="you@example.com" required aria-required="true" />
+            </div>
+          </div>
+          <button type="submit" class="btn-auth" id="forgot-submit">
+            <span class="normal-text">Send Reset Link</span>
+            <span class="loading-text">
+              <span class="spinner" style="width:16px;height:16px;border-width:2px;" aria-hidden="true"></span>
+              Sending…
+            </span>
+          </button>
+          <div class="auth-links">
+            <p class="auth-link"><a href="#" id="back-to-login">← Back to Sign In</a></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- ─── RESET PASSWORD FORM ────────────────────────── -->
+      <div id="form-reset" class="hidden" role="region" aria-label="Set new password">
+        <div style="text-align:center;margin-bottom:var(--space-6);">
+          <span style="font-size:3rem;">🔑</span>
+          <h2 style="font-size:1.25rem;margin:var(--space-3) 0 var(--space-2);">Set new password</h2>
+        </div>
+        <form class="auth-form" id="reset-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="reset-password">New Password</label>
+            <div class="input-group">
+              <svg class="input-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input class="form-input" type="password" id="reset-password" name="password" placeholder="Min. 8 characters" required aria-required="true" minlength="8" />
+            </div>
+          </div>
+          <button type="submit" class="btn-auth" id="reset-submit">
+            <span class="normal-text">Reset Password</span>
+            <span class="loading-text">
+              <span class="spinner" style="width:16px;height:16px;border-width:2px;" aria-hidden="true"></span>
+              Resetting…
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- ─── EMAIL VERIFICATION STATE ──────────────────── -->
+      <div id="form-verify" class="hidden" role="region" aria-label="Email verification">
+        <div style="text-align:center;">
+          <span class="verify-icon" aria-hidden="true">📬</span>
+          <h2 style="font-size:1.25rem;margin-bottom:var(--space-3);">Check your email</h2>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:var(--space-6);">
+            We've sent a verification link to your email address. Click it to activate your account.
+          </p>
+          <button id="resend-btn" class="btn btn-secondary w-full" style="justify-content:center;margin-bottom:var(--space-3);">Resend Email</button>
+          <p class="auth-link"><a href="#" id="back-to-login-2">← Back to Sign In</a></p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast-container" role="alert" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="/js/app.js" defer></script>
+  <script src="/js/auth.js" defer></script>
+</body>
+</html>
