@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Disallow: /api/
+Disallow: /chat.html
+Disallow: /admin.html
+Disallow: /auth.html
+
+Sitemap: https://zana-ai.com/sitemap.xml
