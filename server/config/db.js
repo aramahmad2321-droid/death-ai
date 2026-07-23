@@ -4,7 +4,7 @@
 
 'use strict';
 
-const mongoose = require('mongoose');
+mongoose.set('bufferCommands', false);
 
 const connectDB = async () => {
   const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/zana-ai';
